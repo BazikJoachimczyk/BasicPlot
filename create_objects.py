@@ -2,7 +2,6 @@ from astropy import units as u
 from astropy.coordinates import SkyCoord, EarthLocation
 
 PIWNICE = EarthLocation(lat = 53*u.deg, lon = 18*u.deg, height = 70*u.m)
-OBJECTS = None
 
 path = r"C:\Users\Bazik\Desktop\lista_obiektów.txt"
 
@@ -20,13 +19,14 @@ class Object:
     def FillSkycoords(self):
         self.skycoords = SkyCoord(ra = self.ra*u.deg, dec = self.dec*u.deg)
 
-OBJECTS = []
-with open(path, 'r') as file:
-    for line in file:
-        elements = line.split()
-        obj = Object(elements[0], elements[1], elements[2])
-        obj.FillSkycoords()
-        OBJECTS.append(obj)
-
+def BuildObjectsList():
+    objects = []
+    with open(path, 'r') as file:
+        for line in file:
+            elements = line.split()
+            obj = Object(elements[0], elements[1], elements[2])
+            obj.FillSkycoords()
+            objects.append(obj)
+    return objects
 
 # zakładam, że zwraca: listę obiektów OBJECTS, współrzędne obserwatorium PIWNICE
