@@ -1,5 +1,5 @@
 from .calculate_visibility import CalculateAltitudes
-from .create_objects import PIWNICE, OBJECTS
+from .create_objects import PIWNICE, BuildObjectsList
 import matplotlib.pyplot as plt
 from astropy.coordinates import get_moon
 
