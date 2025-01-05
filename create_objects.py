@@ -1,9 +1,8 @@
 from astropy import units as u
-from astropy.coordinates import SkyCoord, EarthLocation
+from astropy.coordinates import SkyCoord, EarthLocation, AltAz
 
-PIWNICE = EarthLocation(lat = 53*u.deg, lon = 18*u.deg, height = 70*u.m)
 
-path = r"C:\Users\Bazik\Desktop\lista_obiektów.txt"
+PIWNICE = EarthLocation(lat = 53.0975*u.deg, lon = 18.5625*u.deg, height = 80*u.m)
 
 # zakładam, że dostaję plik tekstowy, gdzie:
 # nazwa_obiektu ra dec w formie dziesiętnej stopni na ten moment
@@ -19,7 +18,7 @@ class Object:
     def FillSkycoords(self):
         self.skycoords = SkyCoord(ra = self.ra*u.deg, dec = self.dec*u.deg)
 
-def BuildObjectsList():
+def BuildObjectsList(path):
     objects = []
     with open(path, 'r') as file:
         for line in file:
