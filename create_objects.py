@@ -28,4 +28,6 @@ def BuildObjectsList(path):
             objects.append(obj)
     return objects
 
+
+
 # zakładam, że zwraca: listę obiektów OBJECTS, współrzędne obserwatorium PIWNICE
