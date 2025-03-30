@@ -19,9 +19,11 @@ class Object:
         self.skycoords = SkyCoord(ra = self.ra*u.deg, dec = self.dec*u.deg)
 
 def BuildObjectsList(path):
+    print('in build objects')
     objects = []
     with open(path, 'r') as file:
         for line in file:
+            print(line)
             elements = line.split()
             obj = Object(elements[0], elements[1], elements[2])
             obj.FillSkycoords()

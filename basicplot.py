@@ -1,6 +1,7 @@
-import sys, os
+import sys, os, threading
 import plot_all, time_scale, create_objects
 import argparse
+import moon_separations
 
 def run():
     if len(sys.argv) != 3:
@@ -41,6 +42,7 @@ def run():
 
     objects = create_objects.BuildObjectsList(path)
     plot_all.Plot(objects, timescale)
+    moon_separations.PlotMoonSeparation(objects, timescale)
 
 
 if __name__ == '__main__':
