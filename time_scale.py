@@ -13,19 +13,19 @@ def TimeScale12hrs():
 def TimeScaleForTheNight():
     now = Time.now()
     current_hour = now.datetime.hour
-    delta_time = TimeDelta(5, format = 'min')
+    delta_time = TimeDelta(60, format = 'sec')
     time_scale = []
     print('current hour', current_hour)
     if current_hour < 7:
-        one_day = TimeDelta(1, format = 'day')
+        one_day = TimeDelta(1, format = 'jd')
         yesterday = now - one_day
         yesterday_datetime = yesterday.to_datetime()
-        yesterday_datetime.replace(hour = 18, minute = 0, second = 0, microsecond = 0)
+        yesterday_datetime = yesterday_datetime.replace(hour = 18, minute = 0, second = 0, microsecond = 0)
         print("yesterday_datetime", yesterday_datetime)
         start = Time(yesterday_datetime)
     else:
         today_datetime = now.to_datetime()
-        today_datetime.replace(hour = 18, minute = 0, second = 0, microsecond = 0)
+        today_datetime = today_datetime.replace(hour = 18, minute = 0, second = 0, microsecond = 0)
         start = Time(today_datetime)
     print(start)
     time_scale.append(start)
@@ -33,6 +33,8 @@ def TimeScaleForTheNight():
         start += delta_time
         time_scale.append(start)
     return time_scale
+
+
 
 def GivenTimeScale(start: list, end:list):
     return None

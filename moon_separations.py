@@ -18,7 +18,7 @@ def PlotMoonSeparation(objects:list, timescale: list):
             separations.append(separation.deg)
         plt.plot(timescale, separations, label = obj.name)
     plt.xlabel('UTC [month-day hour]')
-    plt.ylabel('Altitude [deg]')
+    plt.ylabel('Separation [deg]')
     plt.grid()
     plt.legend()
     plt.show()
