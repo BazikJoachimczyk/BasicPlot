@@ -1,20 +1,19 @@
-import sys, os, threading
+import sys, os
 import plot_all, time_scale, create_objects, calculate_visibility
 import argparse
-import moon_separations
 
-def run():
+def run(argv=None):
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument("-mode", choices = ["tonight", "12", "ui"], required=True, help="Mode: 'tonight' for full night, '12' for the next 12 hours, 'ui' for JSON format.")
     parser.add_argument("-file", type=str, help="Path to text file with coordinates.", required=False)
-    parser.add_argument("-moon", type=bool, help="Plotting moon separation.", required=False)
+    parser.add_argument("-moon", action="store_true", help="Plotting moon separation.")
 
     parser.add_argument("-ra", type=str, help="Right Ascension in hh:mm:ss format.")
     parser.add_argument("-dec", type=str, help="Declination in +-dd:mm:ss format.")
     parser.add_argument("-lat", type=str, help="Latitude in +-dd:mm:ss format (+ is north, - is south).")
     parser.add_argument("-lon", type=str, help="Longitude in +-dd:mm:ss format (+ is east, - is west).")
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     mode = args.mode
     
     if mode in ["tonight", "12"]:

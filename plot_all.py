@@ -2,83 +2,89 @@ import calculate_visibility
 import numpy as np
 from create_objects import PIWNICE
 import matplotlib.pyplot as plt
-from astropy.coordinates import get_body, AltAz, SkyCoord
+from astropy.coordinates import SkyCoord
 import astropy.units as u
 from sun_events import BodyAlt
 
 #add location as parameter
 
+# (sun altitude limit, color) - bands overlap, so the sky gets darker with every twilight stage
+TWILIGHT_BANDS = [(0, 'whitesmoke'), (-6, 'lightgray'), (-12, 'darkgray')]
 
-def Plot(objects:list, timescale:list, moon_separation:bool = False):
-    timescale_dt = [t.datetime for t in timescale]
 
-    sun_altitudes = np.array(BodyAlt(timescale=timescale, location=PIWNICE, body = 'sun').altitudes)
-    moon_altitudes = np.array(BodyAlt(timescale=timescale, location=PIWNICE, body = 'moon').altitudes) 
+def ContiguousSpans(times, mask):
+    """Return (start, end) pairs for every contiguous run of True in mask."""
+    spans = []
+    start = None
+    for i, flag in enumerate(mask):
+        if flag and start is None:
+            start = i
+        elif not flag and start is not None:
+            spans.append((times[start], times[i - 1]))
+            start = None
+    if start is not None:
+        spans.append((times[start], times[len(mask) - 1]))
+    return spans
 
-    moon_coords = [] if moon_separation else None
-    for time_point in timescale:
-        if moon_separation:
-            moon_icrs = get_body('moon', time_point).transform_to('icrs')
-            moon_coords.append(moon_icrs)
+def TwilightSpans(times, sun_altitudes):
+    sun_altitudes = np.asarray(sun_altitudes)
+    return [(color, ContiguousSpans(times, sun_altitudes <= limit)) for limit, color in TWILIGHT_BANDS]
 
-    range06_idx = (np.array(sun_altitudes) <= 0 ) & (np.array(sun_altitudes) > -6)
-    range612_idx = (np.array(sun_altitudes) <= -6 ) & (np.array(sun_altitudes) > -12) 
-    rangebelow12_idx = (np.array(sun_altitudes) < -12)
+def ShadeTwilight(ax, twilight_spans):
+    for color, spans in twilight_spans:
+        for start, end in spans:
+            ax.axvspan(start, end, color = color, alpha = 0.5)
 
-    sun06_times = np.array(timescale_dt)[range06_idx]
-    sun612_times = np.array(timescale_dt)[range612_idx]
-    sunbelow12_times = np.array(timescale_dt)[rangebelow12_idx]
+def MoonSeparations(obj, moon_coords):
+    obj_coords = SkyCoord(ra = obj.ra * u.deg, dec = obj.dec * u.deg)
+    # measure in the Moon's topocentric frame - converting the Moon to ICRS would move it to the barycentre
+    return moon_coords.separation(obj_coords, origin_mismatch = "ignore").deg
 
-    fig, axes = plt.subplots(1, 2 if moon_separation else 1, figsize=(14, 7))#, constrained_layout=True)
-    plt.tight_layout(rect=[0, 0.1, 1, 1])
+def LabelMaximum(ax, times, values, label, ylim_top):
+    max_idx = int(np.argmax(values))
+    y = min(values[max_idx] + 2, ylim_top - 4)
+    ax.text(times[max_idx], y, label, fontsize=12, color='black', ha='center')
+
+
+def Plot(objects:list, timescale, moon_separation:bool = False):
+    timescale_dt = timescale.datetime
+
+    sun_altitudes = BodyAlt(timescale=timescale, location=PIWNICE, body = 'sun').altitudes
+    moon = BodyAlt(timescale=timescale, location=PIWNICE, body = 'moon')
+    twilight_spans = TwilightSpans(timescale_dt, sun_altitudes)
+
+    fig, axes = plt.subplots(1, 2 if moon_separation else 1, figsize=(16, 4))
     if not moon_separation:
         axes = [axes]
 
     ax1 = axes[0]
-    ax1.plot(timescale_dt, moon_altitudes, label='Moon Altitude', color='gray')
-    ax1.axvspan(sun06_times[0], sun06_times[-1], color = 'whitesmoke', alpha = 0.5)
-    ax1.axvspan(sun612_times[0], sun612_times[-1], color = 'lightgray', alpha = 0.5)
-    ax1.axvspan(sunbelow12_times[0], sunbelow12_times[-1], color = 'darkgray', alpha = 0.5)
+    ax1.plot(timescale_dt, moon.altitudes, label='Moon Altitude', color='gray')
+    ShadeTwilight(ax1, twilight_spans)
     ax1.axhline(y=25, color = 'black', linestyle = '--')
-    for i in range(len(objects)):
-        altitudes = calculate_visibility.CalculateAltitudes(ra=objects[i].ra, dec=objects[i].dec, time=timescale)
-        max_alt = max(altitudes)
-        max_alt_index = altitudes.index(max_alt)
-        max_time = timescale_dt[max_alt_index]
-        ax1.plot(timescale_dt, altitudes, label=f"{i + 1} - {objects[i].name}", color='black')
-        ax1.text(max_time, max_alt + 2, str(i + 1), fontsize=12, color='black', ha='center')
+    for i, obj in enumerate(objects):
+        altitudes = calculate_visibility.CalculateAltitudes(ra=obj.ra, dec=obj.dec, time=timescale)
+        ax1.plot(timescale_dt, altitudes, label=f"{i + 1} - {obj.name}", color='black')
+        LabelMaximum(ax1, timescale_dt, altitudes, str(i + 1), ylim_top=90)
     ax1.set_xlabel('UTC [month-day hour]')
     ax1.set_ylabel('Altitude [deg]')
     ax1.grid()
     ax1.set_ylim(0, 90)
-    ax1.set_title('Altitude')    
+    ax1.set_title('Altitude')
 
 
     if moon_separation:
-            ax2 = axes[1]
-            for i in range(len(objects)):
-                separations = []
-                obj_coords = SkyCoord(ra=objects[i].ra * u.deg, dec=objects[i].dec * u.deg)
-                for moon_point in moon_coords:
-                    separation = obj_coords.separation(moon_point)
-                    separations.append(separation.deg)
-                ax2.axvspan(sun06_times[0], sun06_times[-1], color = 'whitesmoke', alpha = 0.5)
-                ax2.axvspan(sun612_times[0], sun612_times[-1], color = 'lightgray', alpha = 0.5)
-                ax2.axvspan(sunbelow12_times[0], sunbelow12_times[-1], color = 'darkgray', alpha = 0.5)
-                ax2.plot(timescale_dt, separations, color='black')
-                max_sep = max(separations)
-                max_idx = separations.index(max_sep)
-                max_time = timescale_dt[max_idx]
-                ax2.text(max_time, max_sep + 2, str(i + 1), fontsize=12, color='black', ha='center')
-            ax2.set_xlabel('UTC [month-day hour]')
-            ax2.set_ylabel('Separation [deg]')
-            ax2.grid()
-            ax2.set_ylim(0, 180)
-            ax2.set_title('Moon Separation')
+        ax2 = axes[1]
+        ShadeTwilight(ax2, twilight_spans)
+        for i, obj in enumerate(objects):
+            separations = MoonSeparations(obj, moon.coords)
+            ax2.plot(timescale_dt, separations, color='black')
+            LabelMaximum(ax2, timescale_dt, separations, str(i + 1), ylim_top=180)
+        ax2.set_xlabel('UTC [month-day hour]')
+        ax2.set_ylabel('Separation [deg]')
+        ax2.grid()
+        ax2.set_ylim(0, 180)
+        ax2.set_title('Moon Separation')
 
     fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.05), fancybox=True, shadow=True, ncol=len(objects) // 2 + 1, fontsize=10)
-    plt.subplots_adjust(bottom=0.3)  
+    plt.subplots_adjust(bottom=0.3)
     plt.show()
-
-
-
