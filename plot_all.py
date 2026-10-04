@@ -1,4 +1,5 @@
 import calculate_visibility
+import math
 import numpy as np
 from create_objects import PIWNICE
 import matplotlib.pyplot as plt
@@ -10,6 +11,8 @@ from sun_events import BodyAlt
 
 # (sun altitude limit, color) - bands overlap, so the sky gets darker with every twilight stage
 TWILIGHT_BANDS = [(0, 'whitesmoke'), (-6, 'lightgray'), (-12, 'darkgray')]
+PLOT_HEIGHT = 4             # inches, without the legend
+LEGEND_MAX_COLUMNS = 6
 
 
 def ContiguousSpans(times, mask):
@@ -53,7 +56,13 @@ def Plot(objects:list, timescale, moon_separation:bool = False):
     moon = BodyAlt(timescale=timescale, location=PIWNICE, body = 'moon')
     twilight_spans = TwilightSpans(timescale_dt, sun_altitudes)
 
-    fig, axes = plt.subplots(1, 2 if moon_separation else 1, figsize=(16, 4))
+    # legend below the plots grows in rows instead of running off the sides of the figure
+    legend_entries = len(objects) + 1
+    legend_ncol = min(legend_entries, LEGEND_MAX_COLUMNS)
+    legend_height = 0.25 * math.ceil(legend_entries / legend_ncol) + 0.3
+    fig_height = PLOT_HEIGHT + legend_height
+
+    fig, axes = plt.subplots(1, 2 if moon_separation else 1, figsize=(16, fig_height))
     if not moon_separation:
         axes = [axes]
 
@@ -85,6 +94,6 @@ def Plot(objects:list, timescale, moon_separation:bool = False):
         ax2.set_ylim(0, 180)
         ax2.set_title('Moon Separation')
 
-    fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.05), fancybox=True, shadow=True, ncol=len(objects) // 2 + 1, fontsize=10)
-    plt.subplots_adjust(bottom=0.3)
+    fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.1 / fig_height), fancybox=True, shadow=True, ncol=legend_ncol, fontsize=10)
+    plt.subplots_adjust(bottom=(legend_height + 0.7) / fig_height)
     plt.show()
