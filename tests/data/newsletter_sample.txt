@@ -1,0 +1,31 @@
+Hello,
+Greetings from the BHTOM Automated Newsletter!
+
+As of 2026-09-14 08:07:00.414603+00:00, these are the new targets added in the last week for observing (importance>=1), sorted by magnitude:
+
+
+name	ra	dec	mag_last	sun_separation	classification	description
+SN2026aaiv	339.273408	34.409825	11.9	140.0	SN	Nearby Supernova Type Ia in NGC7331
+GK_Per	52.800040	43.904310	13.0	108.0	CV	DQ Her-type magnetic CV (intermediate polar)
+AT 2026abbh	267.489708	-21.011528	14.6	97.0	Unknown	LPV? https://www.wis-tns.org/object/2026abbh
+In addition, here are some older targets that are currently visible and requested for observations. These targets have an importance>=4, a sun separation>70, and last magnitude<18, sorted by magnitude.
+
+North (dec>0):
+
+name	ra	dec	mag_last	sun_separation	classification	description
+HD216629	343.315017	62.145834	8.5	114.0	YSO	Herbig Ae need first analysisch for survey
+Gaia_DR3_1647756923141966720	238.170333	69.557056	8.9	79.0	CV	AM Canum Venaticorum star. No remarks on the VSX AAVSO site. No orbital period.
+GAIA DR3 2207162600835525760	343.140631	62.313246	9.3	114.0	YSO	High scientific interest embedded field. Extreme RUWE 33 Optically unresolved Please dont saturate
+LS I +61 302	40.131935	61.229332	10.8	105.0	Unknown	Be-star with unknown compact companion
+UCAC4 489-096064	289.315500	7.796900	12.6	117.0	EB	S1 Aql from Squadra group, preliminary periods: A: 2.36 days, B: 3.72 days
+3C 138	80.291192	16.639459	16.0	90.0	QSO	Compact Steep Spectrum (CSS) type source currently flaring in Gamma-rays and optical
+SN 2026fov	337.113504	30.298461	17.5	143.0	SN	Closest Type II supernova at 11.82 Mpc
+South (dec<0):
+
+name	ra	dec	mag_last	sun_separation	classification	description
+T Ori	83.960201	-5.476368	9.9	88.0	YSO	Herbig AeBe star, YSO
+Mkn590	33.639835	-0.766717	14.0	138.0	QSO	Flaring quasar
+Last week's total of images processed: 27741 (26760 with success).
+
+Clear skies!
+Your BHTOM Team
