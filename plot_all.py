@@ -14,6 +14,10 @@ TWILIGHT_BANDS = [(0, 'whitesmoke'), (-6, 'lightgray'), (-12, 'darkgray')]
 PLOT_WIDTH = 14             # inches
 PLOT_HEIGHT = 5             # inches, without the legend
 LEGEND_MAX_COLUMNS = 4
+# 8 colours that stay distinguishable also for colour-blind readers; with more targets the
+# line style changes, so every target up to 32 gets its own colour + style combination
+TARGET_COLORS = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948']
+TARGET_LINESTYLES = ['-', '--', ':', '-.']
 
 
 def ContiguousSpans(times, mask):
@@ -50,6 +54,12 @@ def LabelMaximum(ax, times, values, label, ylim_top):
     ax.text(times[max_idx], y, label, fontsize=12, color='black', ha='center')
 
 
+def TargetStyle(index:int):
+    """Colour and line style of the index-th target (0-based)."""
+    color = TARGET_COLORS[index % len(TARGET_COLORS)]
+    linestyle = TARGET_LINESTYLES[(index // len(TARGET_COLORS)) % len(TARGET_LINESTYLES)]
+    return color, linestyle
+
 def LegendLabel(number:int, obj, mean_moon_separation:float):
     return f"{number} - {obj.name} ({mean_moon_separation:.0f} deg)"
 
@@ -75,7 +85,9 @@ def Plot(objects:list, timescale):
         altitudes = calculate_visibility.CalculateAltitudes(ra=obj.ra, dec=obj.dec, time=timescale)
         # separation changes only by a few degrees during the night, so the mean is enough
         mean_separation = float(np.mean(MoonSeparations(obj, moon.coords)))
-        ax.plot(timescale_dt, altitudes, label=LegendLabel(i + 1, obj, mean_separation), color='black')
+        color, linestyle = TargetStyle(i)
+        ax.plot(timescale_dt, altitudes, label=LegendLabel(i + 1, obj, mean_separation),
+                color=color, linestyle=linestyle, linewidth=2)
         LabelMaximum(ax, timescale_dt, altitudes, str(i + 1), ylim_top=90)
     ax.set_xlabel('UTC [month-day hour]')
     ax.set_ylabel('Altitude [deg]')

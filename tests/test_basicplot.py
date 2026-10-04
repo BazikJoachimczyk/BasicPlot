@@ -165,6 +165,16 @@ class PlotSmokeTests(unittest.TestCase):
                     for i, o in enumerate(self.objects)]
         self.assertEqual(labels, ['Moon Altitude'] + expected)
 
+    def test_every_target_has_its_own_style(self):
+        styles = [plot_all.TargetStyle(i) for i in range(32)]
+        self.assertEqual(len(set(styles)), 32)
+
+    def test_target_lines_use_target_styles(self):
+        fig = self.run_plot(time_scale.TimeScaleForTheNight(Time('2026-10-04T20:00:00')))
+        target_lines = [line for line in fig.axes[0].get_lines() if line.get_label()[0].isdigit()]
+        drawn = [(matplotlib.colors.to_hex(line.get_color()), line.get_linestyle()) for line in target_lines]
+        self.assertEqual(drawn, [plot_all.TargetStyle(i) for i in range(len(self.objects))])
+
     def test_legend_label_format(self):
         self.assertEqual(plot_all.LegendLabel(3, Object('Gaia21azc', 0, 0), 24.6), '3 - Gaia21azc (25 deg)')
 
