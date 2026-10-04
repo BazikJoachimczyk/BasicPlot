@@ -1,7 +1,7 @@
 """Visibility plot for the high priority northern targets from the weekly BHTOM newsletter.
 
 Usage:
-    python newsletter.py email.txt [-mode tonight|12] [-moon] [-save targets.txt]
+    python newsletter.py email.txt [-mode tonight|12] [-save targets.txt]
 
 Save the e-mail body as a text file (or pass '-' and paste it into stdin).
 """
@@ -67,7 +67,6 @@ def run(argv=None):
     parser = argparse.ArgumentParser(description="Plot visibility of high priority northern targets from the BHTOM newsletter.")
     parser.add_argument("email", help="Text file with the newsletter e-mail ('-' reads stdin).")
     parser.add_argument("-mode", choices = ["tonight", "12"], default="tonight", help="'tonight' for full night, '12' for the next 12 hours.")
-    parser.add_argument("-moon", action="store_true", help="Plotting moon separation.")
     parser.add_argument("-save", type=str, help="Also save targets as '<name> <ra> <dec>' list usable with basicplot.py -file.")
     args = parser.parse_args(argv)
 
@@ -98,7 +97,7 @@ def run(argv=None):
         print(f"Saved target list to {args.save}")
 
     timescale = time_scale.TimeScaleForTheNight() if args.mode == "tonight" else time_scale.TimeScale12hrs()
-    plot_all.Plot(targets, timescale, moon_separation=args.moon)
+    plot_all.Plot(targets, timescale)
 
 
 if __name__ == "__main__":

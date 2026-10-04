@@ -6,7 +6,6 @@ def run(argv=None):
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument("-mode", choices = ["tonight", "12", "ui"], required=True, help="Mode: 'tonight' for full night, '12' for the next 12 hours, 'ui' for JSON format.")
     parser.add_argument("-file", type=str, help="Path to text file with coordinates.", required=False)
-    parser.add_argument("-moon", action="store_true", help="Plotting moon separation.")
 
     parser.add_argument("-ra", type=str, help="Right Ascension in hh:mm:ss format.")
     parser.add_argument("-dec", type=str, help="Declination in +-dd:mm:ss format.")
@@ -34,7 +33,7 @@ def run(argv=None):
 
 
         objects = create_objects.BuildObjectsList(path)
-        plot_all.Plot(objects, timescale, moon_separation=args.moon)
+        plot_all.Plot(objects, timescale)
 
     elif mode == "ui":
         if not all([args.ra, args.dec, args.lat, args.lon]):

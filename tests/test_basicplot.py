@@ -137,43 +137,50 @@ class MoonSeparationTests(unittest.TestCase):
 class PlotSmokeTests(unittest.TestCase):
     objects = [Object('A', 347.4182, 62.4830), Object('B', 281.649375, 0.922556), Object('C', 217.567, 23.062)]
 
-    def run_plot(self, timescale, moon_separation):
+    def run_plot(self, timescale):
         with mock.patch.object(plt, 'show'):
-            plot_all.Plot(self.objects, timescale, moon_separation=moon_separation)
+            plot_all.Plot(self.objects, timescale)
         fig = plt.gcf()
         self.addCleanup(plt.close, fig)
         return fig
 
     def test_summer_night_without_astronomical_darkness(self):
-        self.run_plot(time_scale.TimeScaleForTheNight(Time('2026-06-21T22:00:00')), moon_separation=True)
+        self.run_plot(time_scale.TimeScaleForTheNight(Time('2026-06-21T22:00:00')))
 
     def test_daytime_12hrs_without_twilight(self):
         ts = time_scale._minute_grid(Time('2026-10-04T08:00:00'), 60)
-        self.run_plot(ts, moon_separation=False)
+        self.run_plot(ts)
 
-    def test_twilight_shading_not_repeated_per_object(self):
-        fig = self.run_plot(time_scale.TimeScaleForTheNight(Time('2026-10-04T20:00:00')), moon_separation=True)
-        ax1, ax2 = fig.axes[:2]
-        spans = lambda ax: sum(isinstance(p, Rectangle) for p in ax.patches)
-        self.assertGreater(spans(ax2), 0)
-        self.assertEqual(spans(ax1), spans(ax2))
+    def test_single_panel_with_twilight_shading(self):
+        fig = self.run_plot(time_scale.TimeScaleForTheNight(Time('2026-10-04T20:00:00')))
+        self.assertEqual(len(fig.axes), 1)
+        self.assertGreater(sum(isinstance(p, Rectangle) for p in fig.axes[0].patches), 0)
+
+    def test_legend_has_mean_moon_separation(self):
+        ts = time_scale.TimeScaleForTheNight(Time('2026-10-04T20:00:00'))
+        fig = self.run_plot(ts)
+        labels = [t.get_text() for t in fig.legends[0].get_texts()]
+        moon = get_body('moon', ts, location=PIWNICE)
+        expected = [f"{i + 1} - {o.name} ({np.mean(plot_all.MoonSeparations(o, moon)):.0f} deg)"
+                    for i, o in enumerate(self.objects)]
+        self.assertEqual(labels, ['Moon Altitude'] + expected)
+
+    def test_legend_label_format(self):
+        self.assertEqual(plot_all.LegendLabel(3, Object('Gaia21azc', 0, 0), 24.6), '3 - Gaia21azc (25 deg)')
 
 
 class CliTests(unittest.TestCase):
-    def setUp(self):
-        self.path = write_temp('A 10 20\n')
-        self.addCleanup(os.remove, self.path)
-
-    def run_cli(self, *argv):
+    def test_tonight_plots_objects_from_file(self):
+        path = write_temp('A 10 20\nB 30 40\n')
+        self.addCleanup(os.remove, path)
         with mock.patch.object(plot_all, 'Plot') as plot, mock.patch('builtins.print'):
-            basicplot.run(['-mode', 'tonight', '-file', self.path, *argv])
-        return plot.call_args.kwargs['moon_separation']
+            basicplot.run(['-mode', 'tonight', '-file', path])
+        objects, timescale = plot.call_args.args
+        self.assertEqual([o.name for o in objects], ['A', 'B'])
 
-    def test_moon_flag(self):
-        self.assertTrue(self.run_cli('-moon'))
-
-    def test_moon_default_off(self):
-        self.assertFalse(self.run_cli())
+    def test_moon_flag_removed(self):
+        with self.assertRaises(SystemExit), mock.patch('sys.stderr'):
+            basicplot.run(['-mode', 'tonight', '-file', 'x.txt', '-moon'])
 
 
 if __name__ == '__main__':
