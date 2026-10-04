@@ -1,0 +1,209 @@
+Hello,
+Greetings from the BHTOM Automated Newsletter!
+
+Please note the main server name change from bh-tom2.astrolabs.pl to bh-tom2.astrouw.edu.pl. The alias bhtom.space is still valid.
+
+
+As of 2026-09-14 08:07:00.414603+00:00, these are the new targets added in the last week for observing (importance>=1), sorted by magnitude:
+
+
+name	ra	dec	mag_last	sun_separation	classification	description
+SN2026aaiv	339.273408	34.409825	11.9	140.0	SN	Nearby Supernova Type Ia in NGC7331
+GK_Per	52.800040	43.904310	13.0	108.0	CV	DQ Her-type magnetic CV (intermediate polar)
+AT 2026abbh	267.489708	-21.011528	14.6	97.0	Unknown	LPV? https://www.wis-tns.org/object/2026abbh
+SN 2026zji	301.143608	62.644092	15.2	104.0	SN	SN type Ia; https://www.wis-tns.org/object/2026zji
+Gaia21ejr	254.180260	-33.435190	15.5	86.0	Unknown	bright blue transient near the galactic plane
+Gaia19cln	33.049040	47.934120	16.5	117.0	Unknown	candidate CV MASTER J021211.74+475602.7 in outburst
+Gaia17bwo	254.308560	-54.410290	17.4	89.0	Unknown	candidate CV, bright hostless transient near Galactic plane
+Gaia20arx	18.930120	33.623050	17.8	135.0	CV	known CV CSS081205:011543+333724 in 4 mag outburst
+Gaia16apb	39.871910	78.810690	17.8	94.0	CV	2.5 mag outburst in UV source GALEXASC J023929.18+784838.7
+Gaia19bkr	254.987500	-71.350800	17.8	91.0	CV	known CV ASASSN-16jy
+AT 2026zzd	274.826417	-14.061806	18.3	104.0	Unknown	Astro-COLIBRI target
+Gaia19aby	33.426870	16.657880	18.6	134.0	Unknown	blue transient on faint SDSS star
+Gaia23dsf	18.157200	61.459850	18.6	112.0	Unknown	Outburst in candidate CV
+Gaia21cxl	27.906760	45.654490	19.1	121.0	Unknown	outburst of candidate CV ASASSN-15pc
+Gaia23azi	36.047690	35.988480	19.2	123.0	Unknown	4 mag outburst in candidate CV
+AT2026abpm	281.760650	53.008400	19.4	99.0	Unknown	Possible SN reported today. 16.6 mag. Possible extended red source at the position of the transient could be the host. Observations would be great to constrain the age of the transient.
+Gaia23aey	32.453880	22.160810	19.7	133.0	Unknown	3.5 mag outburst in known candidate CV ASASSN-17ki
+Gaia21adk	39.239220	41.443630	19.7	118.0	CV	blue hostless transient, candidate CV
+Gaia22abk	22.455030	51.888390	19.9	119.0	Unknown	blue transient coincident with faint SDSS source, also coincident with previous transient
+Gaia21enk	27.497500	54.657580	20.0	115.0	Unknown	blue transient
+Gaia19dmz	36.634740	21.114890	20.0	130.0	CV	transient coincident with candidate CV CSS 090920:022632+210654
+Gaia20czk	22.175540	11.514000	20.5	146.0	Unknown	outburst in candidate CV
+Gaia18bis	263.249670	-64.288250	20.9	94.0	Unknown	blue hostless transient
+In addition, here are some older targets that are currently visible and requested for observations. These targets have an importance>=4, a sun separation>70, and last magnitude<18, sorted by magnitude.
+
+North (dec>0):
+
+name	ra	dec	mag_last	sun_separation	classification	description
+HD216629	343.315017	62.145834	8.5	114.0	YSO	Herbig Ae need first analysisch for survey
+Gaia_DR3_1647756923141966720	238.170333	69.557056	8.9	79.0	CV	AM Canum Venaticorum star. No remarks on the VSX AAVSO site. No orbital period.
+GAIA DR3 2207162600835525760	343.140631	62.313246	9.3	114.0	YSO	High scientific interest embedded field. Extreme RUWE 33 Optically unresolved Please dont saturate
+NovaSge2026	296.277000	18.378389	9.6	121.0	Nova	bright classical nova
+LS I +61 302	40.131935	61.229332	10.8	105.0	Unknown	Be-star with unknown compact companion
+2S0114+65	19.511240	65.291619	11.0	108.0	XRB	Supergiant X-ray binary
+TYC4282-930-1	343.409336	62.615911	11.0	114.0	YSO	LS III +62 22 -- Young Stellar Object
+RXJ0146.9+6121	26.750885	61.356573	11.3	110.0	XRB	Be X-ray binary
+RXJ0441.0+4431	70.247207	44.530349	11.5	96.0	XRB	Be X-ray binary
+Gaia DR3 2207274751021560576	343.276248	62.609052	11.7	114.0	YSO	High scientific interest in an embedded field. Extreme RUWE 33. Please dont saturate the star
+UCAC4 489-096064	289.315500	7.796900	12.6	117.0	EB	S1 Aql from Squadra group, preliminary periods: A: 2.36 days, B: 3.72 days
+8C0716_714	110.472701	71.343434	13.2	78.0	BL Lac	checking of ~1.7-days periodic variability and quasi-periodic variability of ~24 days
+UCAC-4 710-082844	320.370041	51.815437	13.5	119.0	EB	S4 Cyg from Squadra group, 2,1953-d period, maximum amplitude ~ 0,35 mag (binary A), 1,6280-d period, maximum amplitude ~ 0,08 mag (binary B), observe densely
+CM_Del	306.237210	17.298420	13.6	130.0	CV	Z Cam type dwarf nova (IW And sub-class)
+BL_Lac	330.680381	42.277772	13.6	130.0	BL Lac	famous variable blazar
+Gaia22efa	67.656210	35.842100	13.7	99.0	YSO	Brightening in candidate YSO. After initial accretion burst the brightness started to rise slowly.
+GROJ2058+42	314.698071	41.776995	13.9	124.0	XRB	Be X-ray binary
+4U0115+63	19.633210	63.742520	14.2	110.0	XRB	Be X-ray binary
+AT2026yly	138.409042	76.471694	14.9	75.0	SN	Type II supernova
+Gaia21ajl	339.423660	39.519000	15.0	135.0	Unknown	Dimming optical source while showing IR outburst. Suspected giant impact collision candidate.
+AT2025sqe	288.715125	8.001778	15.2	116.0	Unknown	slow galactic very red transient
+Gaia24azc	296.202220	23.630800	15.4	119.0	Unknown	candidate microlensing event or Be-type outburst, getting brighter again
+3C 138	80.291192	16.639459	16.0	90.0	QSO	Compact Steep Spectrum (CSS) type source currently flaring in Gamma-rays and optical
+Gaia16ahk	345.104650	41.521870	16.5	135.0	CV	GaiaWeirdest candidate. Currently in superoutburst, expected to continue until September 16.
+Gaia24bux	347.418150	62.482960	17.2	114.0	YSO	Brightening in Gaia and Wise source, possibly new young eruptive star
+AT2021aeuk	243.249342	42.327847	17.4	74.0	QSO	Weird repeating flaring in a z 0.233663 quasar or galaxy
+SN 2026fov	337.113504	30.298461	17.5	143.0	SN	Closeby Type II supernova at 11.82 Mpc
+South (dec<0):
+
+name	ra	dec	mag_last	sun_separation	classification	description
+GaiaDR3_4263591911398361472	289.926500	-0.049900	8.5	118.0	Variable star-other	This target is part of a paper about I am writing a revision for, and I would like to confirm if it is a binary system or not. It has a period of ~1.435 days (if a binary, ~2x1.435 days)
+T Ori	83.960201	-5.476368	9.9	88.0	YSO	Herbig AeBe star, YSO
+TYC 9231-1222-1	181.862074	-70.489348	10.5	74.0	EB	S2 Mus from Squadra group. 2.13397-d period well visible with 0.12 mag (binary A), 2.4962-d period with 0.02-0.05 mag (binary B)
+TIC 117204285	273.282441	-18.112896	10.8	102.0	Planetary Transit	Unconfirmed TESS transit candidate in Sectors 91 and 92 not a confirmed planet follow up photometry requested
+AT2026noc	176.137979	-68.809150	11.6	72.0	Nova	ASASSN-26no Nova
+AT 2026stb	277.815075	-5.575534	12.9	106.0	Nova	Galactic Nova on the rise, Astro-COLIBRI target
+V4141 Sgr	267.599257	-19.895328	13.9	97.0	Symbiotic star	symbiotic star
+Mkn590	33.639835	-0.766717	14.0	138.0	QSO	Flaring quasar
+Gaia20ffw	268.724750	-53.060200	14.8	97.0	CV	outburst in known CV ASASSN-18jq, SU UMa, Psh
+TIC 99629496	291.689208	-10.716439	14.8	120.0	EB	S2 Aql from Squadra group, 3.2608-d period, amplitude 0.25 mag, (binary A), 4.6584-d period, amplitude 0.10 mag, (binary B)
+Nova Centauri 2025	219.340667	-58.794667	14.9	73.0	Nova	potential nova from ASASSN, V1935 Cen
+ASASSN-26af	82.501958	-66.724833	15.2	93.0	Unknown	Undergoing Deep Dimming Events in the LMC
+Nova Sagittarii 2025 no.4	270.969917	-31.456667	15.7	100.0	Nova	Nova Sgr 2025 No. 4 is TCP J18035290-3127298 is TCP J18035278-3127240
+ZTF20abmvlmg	273.225192	-19.436718	15.7	102.0	YSO	eruptive YSO?
+ASASSN-25cd	277.969917	-28.807539	15.8	106.0	Unknown	A Deep, Ongoing, Dipping Event
+TDE2025aarm	68.051646	-5.377697	15.9	104.0	TDE	Nearby TDE from TNS, almost gone
+HE0413_4031	63.810269	-40.394754	15.9	106.0	QSO	Long term variable quasar for monitoring
+ZTF26abbwmoo	314.196929	-18.517942	16.0	140.0	Unknown	Bright transient in galaxy.
+TCP J05191540-0204515	79.814167	-2.080972	16.4	92.0	Unknown	T Tauri Star
+PKS0454-234	74.263250	-23.414450	16.5	98.0	QSO	long time monitoring for ROTUZ team
+ZTF26aavkosv	265.577306	-21.392464	16.9	95.0	Microlensing Event	Microlensing candidate from ZTF
+ZTF26aazvwlo	276.729804	-17.541139	17.0	105.0	Unknown	Candidate Microlensing Event from ZTF
+Gaia24amo	249.148921	-53.749919	17.2	85.0	Microlensing Event	candidate microlensing event, with the second peak
+TCP J18251276-2225293	276.303167	-22.424806	17.3	105.0	Unknown	Astro-COLIBRI target
+ASASSN-26ew	299.090458	-37.405528	17.5	121.0	Unknown	Outburst in candidate CV
+SN 2026mho	301.909587	-21.118444	17.7	129.0	SN	Closest undisputed Type IIn SN in the last decade.
+Last week's total of images processed: 27741 (26760 with success).
+
+Last week's targets observed:
+
+camera	target_names
+AZT-8_C4-16000	Gaia16ahk, Gaia23dts, Gaia24aeg, Gaia18dom, Gaia24amv, Gaia23bcv, Gaia16amd, Gaia19aka, MGAB-V233, Gaia20bus, Gaia17cuh
+AZT-8_PL-4710	Gaia24amv
+Adonis_G2-1600	Gaia24dfv, Gaia24azc, Gaia21ajl, AT 2026rdg, TabbysStar, AT2025acft, LS I +61 302, AM_Her, TCP J21220926+4926242, TCrB, TCP J02191736+2857158
+Adyu60_Andor-934	AT2026aabo, ZTF20abendxc, AT 2026stb, Gaia21ajl, TIC 74487535, Gaia16amd, NovaSge2026, Gaia19bnd, Gaia22cax
+AndromedaC14_QHY600M	TCrB, 1H1936+541
+AsiagoAO-0.67_G4-16000	AT2026aabo, NovaSge2026
+EEye_QHY268M	ZTF26aavkosv, Gaia21ajl, Q0957+561_A
+Flarestar-MPC171_QHY268M	AT2026aabo, Gaia21fji, RUWE 18 star, AT 2026stb, Gaia21ajl, AT 2026rdg, LS I +61 302, TCrB, AT2025sqe, 1H2202+501, NovaSge2026
+HAO68_C3-26000	AT2026aabo, NovaSge2026, AT 2026wop, AT 2026yos
+IST40_G2	AT2026aabo
+Kryoneri-1.2_Andor-Zyla	Gaia24aeg, Gaia21ajl, AT2025sqe, Gaia18dry, Gaia19bnd
+LCOGT-CTIO-1m_4K	Gaia20bus, Gaia24amo, ZTF26aazvwlo, Gaia22cax
+LCOGT-HO-2m_Muscat	MAXI J1820+070, Aql X-1, QZ Vul, V1037Cas, MAXI J1910-057, MAXI J1807+132, V406 Vul, V404_Cyg
+LCOGT-SAAO-1m_4K	SN2026rez, Gaia24amo, ZTF26aazvwlo, Gaia20bus, Gaia22cax
+LCOGT-SS-1m_4K	SN2026rez, Gaia24amo, ZTF26aazvwlo, Gaia20bus, Gaia22cax
+LCOGT-SS-2m_Muscat	MAXI J1659-152, MAXI J0556-332, GX 339-4, XTE J1650-500, MAXI J0637-430, Cen X-4, XTE J1550-564, V1055 Ori, 4U 1957+11, MAXI J1803-298, GRO J1719-24, V4641 Sgr, XTE J1728-295
+LCOGT-Teide-1m_4K	Gaia22cax
+OAUJ-CDK500_U47	SN2024afyu, TCrB, EECep, TabbysStar
+OAUJ-Tymce-36cm_ASI-6200MM	TCrB
+Observatory	AT2026aabo, Gaia21ajl, Nova Sagittarii 2025 no.4, 4U0115+63, BL_Lac, 3C 138, IGRJ06074+2205, NovaSge2026
+Ostrowik-60-cm_SOFIA_E2V	Gaia16ahk, HD216629, ZTF18absdcuk, Gaia21ajl, DM_Dra, AT_2026yxa, 2MASS_J01324221+3021138, AT_2026yxy, Gaia_DR3_1647756923141966720, GK_Per
+PROMPT2_FLI	AT2026ayt
+PROMPT5_Apogee	AT2026ayt, ASASSN-26bl
+Planetarium_Slaskie_Kepler4040	Gaia16ahk
+ROAD40_FLI-KAF-16803	V1223 Sgr
+ROAD40_QHY600M	CD-34 11794, HD 312919, ASASSN-24fw, ASASSN-24cf, V1117 Her, Gaia23dnm, Gaia23cpd, FU Ori, ASASSN-25db, V Sge, V1223 Sgr, TCrB, ASASSN-21co, EX Lup, Gaia24ccy
+ROADC14_QHY600M	Gaia22dbc, AT 2026stb, ASASSN-25cn, ASASSN-26dt, V5856 Sgr, ASASSN-25df, V4141 Sgr, Ross 154, TCP J16001844-2230106, SN 2026mho, Nova Centauri 2025, ASASSN-26bp, T Pyx, ASASSN-26cp, AT 2025nlr
+SHO_ASI6200MM-Pro	BASW 1, Gaia20awf, SN2026aaiv, Gaia21bpe, Gaia19czx, SN2025rbs, Gaia21ebj, ILTJ125901.87+280703.3, ZTF17aabbvnq, Gaia21avq, AT2021ehb
+SUTO-Otivar_ASI1600MM	Gaia23cer, V416Ori, Gaia20cdl, T Ori, SN 2026fov, SDSS_J154329.47+335908.6, FU Ori, Gaia23cnm, ATO J223.4251+52.7158, TIC 367650619, TX Ori, Gaia DR3 2207274751021560576, AT2021aeuk, PKS0454-234, AT2026rok, UX Ori
+Salerno_Observatory_FLI	Gaia21esb, AT2026yly, AT 2026stb, Gaia24azc, Gaia21ajl, 4U0115+63, UCAC-4 710-082844, Gaia24ala, Gaia DR3 2207274751021560576, Gaia22efa, TCrB, AT2025sqe, Gaia_DR3_1647756923141966720, Gaia18dry, Gaia23dqt, NovaSge2026, GaiaDR3_4263591911398361472
+Seestar-S30	SN2026aaiv, BL_Lac, 8C0716_714, NovaSge2026, SN 2026sqf
+Seestar-S50	AT2026aabo, AT2026yly, AT 2026stb, SN2026aaiv, Gaia21ajl, AT 2026rdg, BL_Lac, 8C0716_714, TCrB, GK_Per, Gaia24blq, DO_Dra, Gaia18dry, Z_Cam, CM_Del, NovaSge2026, Gaia_DR3_1647756923141966720, SN 2026sqf
+Slooh-AU_FLI-KAF-16803	AT2026zcr, ZTF20abendxc, TIC 99629496, ASASSN-25cd, SN 2026mho, ZTF26abbwmoo
+Slooh-Canary_KAF-09000	SN 2026fov, Gaia21ajl, GROJ2058+42, CM_Del
+TJO_MEIA3	AT2026aabo, TDE2025aarm, Gaia21ajl, 2MASS_J01324221+3021138, TCrB, LS I +61 302, EECep, AT2025abao, Gaia16amd, Gaia23dqt, GaiaDR3_4263591911398361472, Gaia19bnd
+UwB_Moravian-C3-61000-PRO-EC	SN 2026kid, V1413 Aql, 1ES 0502+675, Gaia22dbc, Gaia24azc, SN 2026fov, AT 2026ywc, Gaia24aeg, Gaia24dov, 2MASS_J01324221+3021138, TCrB, Gaia22efa, Gaia24dfc, Gaia18dry, Gaia16amd, AT2026rok, Gaia23dqt, CM_Del
+Last week's fits uploads score (sorted by count)
+
+observatory-user	count
+Franz-Josef Hambsch (ROAD40_QHY600M)	16273
+Franz-Josef Hambsch (ROADC14_QHY600M)	4753
+Kajetan Siennicki (Ostrowik-60-cm_SOFIA_E2V)	1662
+Valerio Bozza (Salerno_Observatory_FLI)	746
+Staszek Zola (OAUJ-CDK500_U47)	466
+Olga Witkowska (Ostrowik-60-cm_SOFIA_E2V)	439
+Staszek Zola (OAUJ-Tymce-36cm_ASI-6200MM)	396
+Adam Popowicz (SUTO-Otivar_ASI1600MM)	350
+Waldemar Ogloza (Adyu60_Andor-934)	266
+Zbigniew Grabowski (Seestar-S50)	214
+Ernest Glowacki (UwB_Moravian-C3-61000-PRO-EC)	212
+Josep Manel Carrasco (TJO_MEIA3)	211
+Weronika Skrobacz (Seestar-S50)	160
+Andrii Simon (Planetarium_Slaskie_Kepler4040)	142
+Franky Dubois (Adonis_G2-1600)	133
+Stephen M. Brincat (Flarestar-MPC171_QHY268M)	123
+Andrii Simon (Observatory)	117
+Maciej Sikora (Observatory)	88
+Justyna Put (Observatory)	84
+Jacek Drazkowski (Seestar-S50)	80
+Sjoerd Dufoer (EEye_QHY268M)	79
+Andrii Simon (AZT-8_C4-16000)	78
+Konstantina Vrontaki (Kryoneri-1.2_Andor-Zyla)	70
+Dariia Rusanova (AZT-8_C4-16000)	67
+Marcin Michalski (Seestar-S50)	58
+Suleyman Fisek (IST40_G2)	57
+Lukasz Wyrzykowski (LCOGT-SS-2m_Muscat)	52
+Jacek Drazkowski (Seestar-S30)	46
+Fraser Lewis (LCOGT-SS-2m_Muscat)	40
+Yen-Hsing Lin (SHO_ASI6200MM-Pro)	39
+Nicholas Rattenbury (Slooh-AU_FLI-KAF-16803)	32
+Jan Kåre Trandem Qvam (HAO68_C3-26000)	26
+Fraser Lewis (LCOGT-HO-2m_Muscat)	20
+Nicholas Rattenbury (Slooh-Canary_KAF-09000)	20
+Patryk Kropacz (Seestar-S50)	20
+Lukasz Wyrzykowski (LCOGT-SS-1m_4K)	17
+Franz-Josef Hambsch (AndromedaC14_QHY600M)	14
+Lukasz Wyrzykowski (LCOGT-HO-2m_Muscat)	12
+Andrea Reguitti (AsiagoAO-0.67_G4-16000)	10
+Staszek Zola (PROMPT5_Apogee)	8
+Jakub Nurkiewicz (Seestar-S50)	8
+Mauritz Wicker (LCOGT-CTIO-1m_4K)	6
+Mauritz Wicker (LCOGT-SAAO-1m_4K)	6
+Lukasz Wyrzykowski (LCOGT-CTIO-1m_4K)	5
+Andrii Simon (LCOGT-CTIO-1m_4K)	5
+Lukasz Wyrzykowski (LCOGT-SAAO-1m_4K)	5
+Andrii Simon (LCOGT-SS-1m_4K)	3
+Priscila Pessi (LCOGT-SS-1m_4K)	3
+Priscila Pessi (LCOGT-SAAO-1m_4K)	3
+Andrii Simon (LCOGT-SAAO-1m_4K)	3
+Staszek Zola (PROMPT2_FLI)	3
+Astro Koluszki (Seestar-S30)	2
+Krzysztof Słowik (Seestar-S30)	2
+Andrii Simon (LCOGT-Teide-1m_4K)	2
+Martine Castets (Seestar-S50)	2
+Przemyslaw J. Mikolajczyk (ROAD40_FLI-KAF-16803)	2
+Dariia Rusanova (AZT-8_PL-4710)	1
+
+
+Top 5 data uploaders!
+name	count
+Franz-Josef Hambsch	21040
+Kajetan Siennicki	1662
+Staszek Zola	873
+Valerio Bozza	746
+Olga Witkowska	439
+
+
+Clear skies!
+Your BHTOM Team
+bhtom.space
