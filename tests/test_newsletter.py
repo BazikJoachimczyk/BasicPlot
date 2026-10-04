@@ -84,18 +84,16 @@ class CliTests(unittest.TestCase):
         return plot
 
     def test_plots_north_targets(self):
-        plot = self.run_cli(SAMPLE, '-moon')
+        plot = self.run_cli(SAMPLE)
         objects, timescale = plot.call_args.args
         self.assertEqual(len(objects), 7)
         self.assertEqual(len(timescale), 901)
-        self.assertTrue(plot.call_args.kwargs['moon_separation'])
 
     def test_reads_stdin(self):
         plot = self.run_cli('-', '-mode', '12', stdin=read_sample())
         objects, timescale = plot.call_args.args
         self.assertEqual(len(objects), 7)
         self.assertEqual(len(timescale), 720)
-        self.assertFalse(plot.call_args.kwargs['moon_separation'])
 
     def test_not_a_newsletter_exits(self):
         with self.assertRaises(SystemExit):

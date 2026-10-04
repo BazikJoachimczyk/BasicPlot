@@ -11,8 +11,9 @@ from sun_events import BodyAlt
 
 # (sun altitude limit, color) - bands overlap, so the sky gets darker with every twilight stage
 TWILIGHT_BANDS = [(0, 'whitesmoke'), (-6, 'lightgray'), (-12, 'darkgray')]
-PLOT_HEIGHT = 4             # inches, without the legend
-LEGEND_MAX_COLUMNS = 6
+PLOT_WIDTH = 14             # inches
+PLOT_HEIGHT = 5             # inches, without the legend
+LEGEND_MAX_COLUMNS = 4
 
 
 def ContiguousSpans(times, mask):
@@ -49,51 +50,39 @@ def LabelMaximum(ax, times, values, label, ylim_top):
     ax.text(times[max_idx], y, label, fontsize=12, color='black', ha='center')
 
 
-def Plot(objects:list, timescale, moon_separation:bool = False):
+def LegendLabel(number:int, obj, mean_moon_separation:float):
+    return f"{number} - {obj.name} ({mean_moon_separation:.0f} deg)"
+
+
+def Plot(objects:list, timescale):
     timescale_dt = timescale.datetime
 
     sun_altitudes = BodyAlt(timescale=timescale, location=PIWNICE, body = 'sun').altitudes
     moon = BodyAlt(timescale=timescale, location=PIWNICE, body = 'moon')
     twilight_spans = TwilightSpans(timescale_dt, sun_altitudes)
 
-    # legend below the plots grows in rows instead of running off the sides of the figure
+    # legend below the plot grows in rows instead of running off the sides of the figure
     legend_entries = len(objects) + 1
     legend_ncol = min(legend_entries, LEGEND_MAX_COLUMNS)
-    legend_height = 0.25 * math.ceil(legend_entries / legend_ncol) + 0.3
+    legend_height = 0.2 * math.ceil(legend_entries / legend_ncol) + 0.2
     fig_height = PLOT_HEIGHT + legend_height
 
-    fig, axes = plt.subplots(1, 2 if moon_separation else 1, figsize=(16, fig_height))
-    if not moon_separation:
-        axes = [axes]
-
-    ax1 = axes[0]
-    ax1.plot(timescale_dt, moon.altitudes, label='Moon Altitude', color='gray')
-    ShadeTwilight(ax1, twilight_spans)
-    ax1.axhline(y=25, color = 'black', linestyle = '--')
+    fig, ax = plt.subplots(figsize=(PLOT_WIDTH, fig_height))
+    ax.plot(timescale_dt, moon.altitudes, label='Moon Altitude', color='gray')
+    ShadeTwilight(ax, twilight_spans)
+    ax.axhline(y=25, color = 'black', linestyle = '--')
     for i, obj in enumerate(objects):
         altitudes = calculate_visibility.CalculateAltitudes(ra=obj.ra, dec=obj.dec, time=timescale)
-        ax1.plot(timescale_dt, altitudes, label=f"{i + 1} - {obj.name}", color='black')
-        LabelMaximum(ax1, timescale_dt, altitudes, str(i + 1), ylim_top=90)
-    ax1.set_xlabel('UTC [month-day hour]')
-    ax1.set_ylabel('Altitude [deg]')
-    ax1.grid()
-    ax1.set_ylim(0, 90)
-    ax1.set_title('Altitude')
-
-
-    if moon_separation:
-        ax2 = axes[1]
-        ShadeTwilight(ax2, twilight_spans)
-        for i, obj in enumerate(objects):
-            separations = MoonSeparations(obj, moon.coords)
-            ax2.plot(timescale_dt, separations, color='black')
-            LabelMaximum(ax2, timescale_dt, separations, str(i + 1), ylim_top=180)
-        ax2.set_xlabel('UTC [month-day hour]')
-        ax2.set_ylabel('Separation [deg]')
-        ax2.grid()
-        ax2.set_ylim(0, 180)
-        ax2.set_title('Moon Separation')
+        # separation changes only by a few degrees during the night, so the mean is enough
+        mean_separation = float(np.mean(MoonSeparations(obj, moon.coords)))
+        ax.plot(timescale_dt, altitudes, label=LegendLabel(i + 1, obj, mean_separation), color='black')
+        LabelMaximum(ax, timescale_dt, altitudes, str(i + 1), ylim_top=90)
+    ax.set_xlabel('UTC [month-day hour]')
+    ax.set_ylabel('Altitude [deg]')
+    ax.grid()
+    ax.set_ylim(0, 90)
+    ax.set_title('Altitude (mean Moon separation in brackets)')
 
     fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.1 / fig_height), fancybox=True, shadow=True, ncol=legend_ncol, fontsize=10)
-    plt.subplots_adjust(bottom=(legend_height + 0.7) / fig_height)
+    plt.subplots_adjust(bottom=(legend_height + 0.6) / fig_height)
     plt.show()
